@@ -1,13 +1,13 @@
-//Following Lesson 1: The Vue Instance
-//Video Challenge: Add a description to your data object.
-//Then use an expression to display the description beneath the h1.
+//Following Lesson 2: Attribute Binding
+//Video Challenge: Add a link to your data object
+//Then use v-bind to bind that link to an anchor tag's href attribute.
 var app = new Vue(
     {
-        el: '#app', //This the element property where we connect
-                    //our vue instance to the div element with id app in the html file
+        el: '#app',
         data:
         {
-            product: `Boots`,
-            description: `They're boots nothing much going on here.` // Very descriptive I see
+            product: `Socks`,
+            image: './assets/vmSocks-green-onWhite.jpg',
+            link: `https://www.vuemastery.com/courses/intro-to-vue-js/attribute-binding`
         }
-    });
+    })
