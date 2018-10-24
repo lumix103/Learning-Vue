@@ -1,6 +1,6 @@
-//Following Lesson 2: Attribute Binding
-//Video Challenge: Add a link to your data object
-//Then use v-bind to bind that link to an anchor tag's href attribute.
+//Following Lesson 3: Conditional Rendering
+//Video Challenge: Adda an onSale property to your data object, then use v-if to display that says "On sale!"
+//whenever onSale is true.
 var app = new Vue(
     {
         el: '#app',
@@ -8,6 +8,7 @@ var app = new Vue(
         {
             product: `Socks`,
             image: './assets/vmSocks-green-onWhite.jpg',
-            link: `https://www.vuemastery.com/courses/intro-to-vue-js/attribute-binding`
+            inventory: 4,
+            onSale: true
         }
     })

@@ -13,16 +13,15 @@
     <div id="app">
         <div class="product">
             <div class="product-image">
-                <!--Vue's v-bind directive-->
-                <!--will create a bond with the data and-->
-                <!--attribute.-->
-                <!--Correct me if I am wrong-->>
                 <img v-bind:src="image">
             </div>
 
             <div class="product-info">
                 <h1>{{product}}</h1>
-                <a :href="link">Link to Intro to Vue.js Lesson 2 Attribute Binding</a>
+                <p v-if="inventory > 10">In Stock</p>
+                <p v-else-if="inventory < 5 && inventory > 0">Almost sold out!</p>
+                <p v-else>Out of stock</p>
+                <span v-if="onSale">On Sale!</span>
             </div>
 
         </div>
