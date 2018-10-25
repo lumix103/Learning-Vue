@@ -17,18 +17,19 @@
             </div>
 
             <div class="product-info">
-                <h1>{{product}}</h1>
+                <h1>{{title}}</h1>
+                <p v-if="onSale">On Sale: {{title}}</p>
+                <!--The Video Challenge is ^^^^ right above not sure if will keep that in later-->
                 <p v-if="inStock">In Stock</p>
                 <p v-else :class="{outOfStock: !inStock}">Out of stock</p>
-                <!--The Video Challenge is ^^^^ right above-->
                 <ul>
                     <li v-for="detail in details">{{detail}}</li>
                 </ul>
-                <div v-for="variant in variants"
+                <div v-for="(variant,index) in variants"
                 :key="variant.variantId"
                 class="color-box"
                 :style="{backgroundColor: variant.variantColor}"
-                @mouseover="updateProduct(variant.variantImage)">
+                @mouseover="updateProduct(index)">
                 </div>
                 <div>
                     <h4>Sizes</h4>
