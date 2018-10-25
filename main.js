@@ -1,5 +1,6 @@
-//Following Lesson 4: List Rendering
-//Video Challenge: Add an array of sizes to your data object, then use v-for to display them as a list.
+//Following Lesson 5: Event Handling
+//Video Challenge: Create a new button and use v-on to trigger a method that decrements
+//the value of cart
 var app = new Vue(
     {
         el: '#app',
@@ -14,14 +15,33 @@ var app = new Vue(
             [
                 {
                  variantsId:2234,
-                 variantColor: "green"
+                 variantColor: "green",
+                 variantImage: `./assets/vmSocks-green-onWhite.jpg`
                 }
                 ,
                 {
                  variantsId:2235,
-                 variantColor: "blue"
+                 variantColor: "blue",
+                 variantImage: `./assets/vmSocks-blue-onWhite.jpg`
                 }
             ],
-            sizes:[`extra-small`,`small`,`medium`,`large`,`extra-large`]
-        }
+            sizes:[`extra-small`,`small`,`medium`,`large`,`extra-large`],
+            cart: 0,
+        },
+        methods:
+            {
+                addToCart: function()
+                {
+                    this.cart += 1;
+                },
+                updateProduct: function(variantImage)
+                {
+                    this.image = variantImage;
+                },
+                removeFromCart: function()
+                {
+                    if(this.cart > 0)
+                        this.cart -= 1;
+                }
+            }
     })

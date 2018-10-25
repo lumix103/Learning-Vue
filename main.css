@@ -55,6 +55,18 @@ body {
     width: 100px;
     font-size: 14px;
   } 
+
+  /*I add this part of the css to make it more obvious for me that I am clicking and hovering over the button*/
+  button:hover {
+    border: 2px solid rgb(30, 135, 211);
+  } 
+
+  button:active
+  {
+    background-color: rgb(104, 175, 226);
+    border: 2px solid rgb(65, 143, 199);
+  }
+
   
   .disabledButton {
     background-color: #d8d8d8;
