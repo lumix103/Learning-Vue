@@ -1,6 +1,6 @@
-//Following Lesson 5: Event Handling
-//Video Challenge: Create a new button and use v-on to trigger a method that decrements
-//the value of cart
+//Following Lesson 6: Class & Style Binding
+//Video Challenge: When inStock is false, bind a class to the "Out of Stock" p tag that adds:
+//text-decoration: line-through;
 var app = new Vue(
     {
         el: '#app',
@@ -9,7 +9,7 @@ var app = new Vue(
             product: `Socks`,
             image: './assets/vmSocks-green-onWhite.jpg',
             inventory: 4,
-            onStock: true,
+            inStock: true,
             details:["80% cotton,","20% polyester","Gender-neutral"],
             variants:
             [
@@ -26,7 +26,7 @@ var app = new Vue(
                 }
             ],
             sizes:[`extra-small`,`small`,`medium`,`large`,`extra-large`],
-            cart: 0,
+            cart: 0
         },
         methods:
             {

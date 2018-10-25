@@ -18,15 +18,17 @@
 
             <div class="product-info">
                 <h1>{{product}}</h1>
-                <p v-if="onStock">In Stock</p>
-                <p v-else>Out of stock</p>
-
+                <p v-if="inStock">In Stock</p>
+                <p v-else :class="{outOfStock: !inStock}">Out of stock</p>
+                <!--The Video Challenge is ^^^^ right above-->
                 <ul>
                     <li v-for="detail in details">{{detail}}</li>
                 </ul>
-                <div v-for="variant in variants":key="variant.variantId">
-                    <!--Short hand for v-on: is @-->
-                    <p @mouseover="updateProduct(variant.variantImage)">{{variant.variantColor}}</p>
+                <div v-for="variant in variants"
+                :key="variant.variantId"
+                class="color-box"
+                :style="{backgroundColor: variant.variantColor}"
+                @mouseover="updateProduct(variant.variantImage)">
                 </div>
                 <div>
                     <h4>Sizes</h4>
@@ -35,7 +37,9 @@
                     <ul>
                 </div>
 
-                <button v-on:click="addToCart">Add to cart</button>
+                <button v-on:click="addToCart"
+                        :disabled="!inStock"
+                        :class="{disabledButton: !inStock}">Add to cart</button>
                 <button @click="removeFromCart">Remove item</button>
                 <div class="cart">
                     <p>Cart({{cart}})</p>                
