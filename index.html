@@ -9,45 +9,8 @@
 </head>
 <body>
     <div class="nav-bar"></div>
-
     <div id="app">
-        <div class="product">
-            <div class="product-image">
-                <img v-bind:src="image">
-            </div>
-
-            <div class="product-info">
-                <h1>{{title}}</h1>
-                <p v-if="onSale">On Sale: {{title}}</p>
-                <!--The Video Challenge is ^^^^ right above not sure if will keep that in later-->
-                <p v-if="inStock">In Stock</p>
-                <p v-else :class="{outOfStock: !inStock}">Out of stock</p>
-                <ul>
-                    <li v-for="detail in details">{{detail}}</li>
-                </ul>
-                <div v-for="(variant,index) in variants"
-                :key="variant.variantId"
-                class="color-box"
-                :style="{backgroundColor: variant.variantColor}"
-                @mouseover="updateProduct(index)">
-                </div>
-                <div>
-                    <h4>Sizes</h4>
-                    <ul>
-                        <li v-for="i in sizes">{{i}}</li>
-                    <ul>
-                </div>
-
-                <button v-on:click="addToCart"
-                        :disabled="!inStock"
-                        :class="{disabledButton: !inStock}">Add to cart</button>
-                <button @click="removeFromCart">Remove item</button>
-                <div class="cart">
-                    <p>Cart({{cart}})</p>                
-                </div>
-
-            </div>
-
+        <product :premium="premium"></product>      
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
