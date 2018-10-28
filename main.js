@@ -1,6 +1,7 @@
-//Following Lesson 8: Components
-//Video Challenge: Create a new component for product details, which receives the
-//details data through a prop called details
+//Following Lesson 8: Communicating Events
+//Video Challenge: Add a button that removes
+// the product from the cart array by emitting an event
+// with the id of the product to be removed
 
 Vue.component(`product-details`,
 {
@@ -49,14 +50,14 @@ Vue.component(`product`,
              inventory: 0
             }
         ],
-        sizes:[`extra-small`,`small`,`medium`,`large`,`extra-large`],
-        cart: 0}
+        sizes:[`extra-small`,`small`,`medium`,`large`,`extra-large`]
+    }
     },
     methods:
     {
         addToCart: function()
                 {
-                    this.cart += 1;
+                this.$emit(`add-to-cart`,this.variants[this.selectedVariant].variantsId);
                 },
                 updateProduct: function(index)
                 {
@@ -64,8 +65,7 @@ Vue.component(`product`,
                 },
                 removeFromCart: function()
                 {
-                    if(this.cart > 0)
-                        this.cart -= 1;
+                    this.$emit(`remove-from-cart`,this.variants[this.selectedVariant].variantsId);
                 }
     },
     computed:
@@ -123,9 +123,7 @@ Vue.component(`product`,
                 :disabled="!inStock"
                 :class="{disabledButton: !inStock}">Add to cart</button>
         <button @click="removeFromCart">Remove item</button>
-        <div class="cart">
-            <p>Cart({{cart}})</p>                
-        </div>
+        
 
     </div>
 
@@ -135,7 +133,20 @@ Vue.component(`product`,
 var app = new Vue(
     {
         el: '#app',
-        data: {premium: true}
+        data: {premium: true,
+            cart: []},
+        methods:
+        {
+            addToCart: function(id)
+            {
+                this.cart.push(id);
+            },
+            removeFromCart(id)
+            {
+                if(this.cart.length > 0)
+                    this.cart.pop(id);
+            }
+        }
     })
 /*
     Going to add this later into the product component
